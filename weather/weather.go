@@ -1,3 +1,5 @@
+// Package weather provides functionality related to weather, including calls to a weather API
+// and various weather-related manipulation functions.
 package weather
 
 import (
@@ -8,6 +10,7 @@ import (
 	"net/url"
 )
 
+// Manager represents the main instance for managing weather-related operations.
 type Manager struct {
 	AppID            string
 	WeatherByCityURL string
@@ -17,6 +20,8 @@ func NewManager(config config.WeatherConfig) *Manager {
 	return &Manager{config.AppID, config.WeatherByCityURL}
 }
 
+// WeatherByCity fetches weather information for a specific city from the weather API.
+// It takes the city name as a parameter and returns a WeatherResponse or an error
 func (m Manager) WeatherByCity(city string) (WeatherResponse, error) {
 	// Create object to return
 	var response WeatherResponse
