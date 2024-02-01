@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/6a6ydoping/GoBot/bot"
 	"github.com/6a6ydoping/GoBot/config"
+	"github.com/6a6ydoping/GoBot/weather"
 )
 
 func main() {
@@ -12,8 +13,10 @@ func main() {
 		fmt.Println("Error reading config")
 		return
 	}
+	fmt.Println(cfg.Weather.WeatherByCityURL)
+	botManager := bot.NewManager(weather.NewManager(cfg.Weather))
 
-	bot.Start(&cfg.Bot)
+	botManager.Start(&cfg.Bot)
 	<-make(chan struct{})
 	return
 }

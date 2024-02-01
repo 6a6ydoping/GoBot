@@ -6,11 +6,17 @@ import (
 )
 
 type Config struct {
-	Bot BotConfig `yaml:"bot"`
+	Bot     BotConfig     `yaml:"bot"`
+	Weather WeatherConfig `yaml:"weather"`
 }
 
 type BotConfig struct {
 	Token string `yaml:"token"`
+}
+
+type WeatherConfig struct {
+	AppID            string `yaml:"AppID"`
+	WeatherByCityURL string `yaml:"ByCityURL"`
 }
 
 func InitConfig(path string) (*Config, error) {
