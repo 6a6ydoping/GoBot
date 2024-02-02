@@ -40,7 +40,6 @@ func (m Manager) WeatherByCity(city string) (WeatherResponse, error) {
 	url := parsedURL.String()
 
 	// request to weather api
-	fmt.Println(url)
 	resp, err := http.Get(url)
 	if err != nil {
 		fmt.Println("Error making HTTP request:", err)

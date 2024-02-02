@@ -15,11 +15,14 @@ import (
 
 // Manager represents the main instance for interacting with the translation API.
 type Manager struct {
-	BaseURl string
+	BaseURl     string
+	ContentType string
+	APIKey      string
+	APIHost     string
 }
 
 func NewManager(config config.TranslatorConfig) *Manager {
-	return &Manager{BaseURl: config.BaseURL}
+	return &Manager{BaseURl: config.BaseURL, ContentType: config.ContentType, APIHost: config.APIHost, APIKey: config.APIKey}
 }
 
 // Translate translates the given text from the source language to the target language.
@@ -35,9 +38,9 @@ func (mg Manager) Translate(s *discordgo.Session, m *discordgo.MessageCreate, te
 		return
 	}
 	// TODO: forgot to replace keys to the config
-	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-	req.Header.Set("X-RapidAPI-Key", "8a0f63e73dmsh95db0ad37870d82p1c1e6ajsncc0ba05f46d4")
-	req.Header.Set("X-RapidAPI-Host", "text-translator2.p.rapidapi.com")
+	req.Header.Set("Content-Type", mg.ContentType)
+	req.Header.Set("X-RapidAPI-Key", mg.APIKey)
+	req.Header.Set("X-RapidAPI-Host", mg.APIHost)
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {

@@ -27,7 +27,10 @@ type WeatherConfig struct {
 }
 
 type TranslatorConfig struct {
-	BaseURL string `yaml:"BaseURL"`
+	BaseURL     string `yaml:"BaseURL"`
+	ContentType string `yaml:"ContentType"`
+	APIKey      string `yaml:"APIKey"`
+	APIHost     string `yaml:"APIHost"`
 }
 
 type TriviaGameConfig struct {
