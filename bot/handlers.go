@@ -26,5 +26,7 @@ func (mg Manager) messageCreate(s *discordgo.Session, m *discordgo.MessageCreate
 		mg.getWeatherByCity(s, m)
 	case "!reminder":
 		mg.setReminder(s, m)
+	case "!translate":
+		mg.translate(s, m)
 	}
 }

@@ -9,8 +9,9 @@ import (
 
 // Config represents the overall configuration structure
 type Config struct {
-	Bot     BotConfig     `yaml:"bot"`
-	Weather WeatherConfig `yaml:"weather"`
+	Bot        BotConfig        `yaml:"bot"`
+	Weather    WeatherConfig    `yaml:"weather"`
+	Translator TranslatorConfig `yaml:"translator"`
 }
 
 // BotConfig represents the configuration settings for the bot.
@@ -22,6 +23,10 @@ type BotConfig struct {
 type WeatherConfig struct {
 	AppID            string `yaml:"AppID"`
 	WeatherByCityURL string `yaml:"ByCityURL"`
+}
+
+type TranslatorConfig struct {
+	BaseURL string `yaml:"BaseURL"`
 }
 
 func InitConfig(path string) (*Config, error) {
