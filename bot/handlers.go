@@ -8,14 +8,12 @@ import (
 	"strings"
 )
 
+// messageCreate entry point in the bot, for processing incoming messages
 func (mg Manager) messageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 	if m.Author.ID == BotID {
 		return
 	}
 
-	if m.Content == "!list" {
-		listCommands(s)
-	}
 	// commands
 	command := strings.Fields(m.Content)[0]
 	if command[0] != '!' { // Check if this not command

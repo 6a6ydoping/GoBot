@@ -17,6 +17,7 @@ var (
 	goBot *discordgo.Session
 )
 
+// Manager is the central manager that coordinates various functionalities in the bot
 type Manager struct {
 	WeatherManager    *weather.Manager
 	ReminderManager   *reminder.Manager
