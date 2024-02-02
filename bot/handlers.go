@@ -33,5 +33,7 @@ func (mg Manager) messageCreate(s *discordgo.Session, m *discordgo.MessageCreate
 		mg.translate(s, m)
 	case "!trivia":
 		mg.trivia(s, m, 0)
+	case "!help":
+		mg.help(s, m)
 	}
 }
