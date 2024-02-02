@@ -1,3 +1,4 @@
+// Package translator provides functionality for text translation using an external API.
 package translator
 
 import (
@@ -12,6 +13,7 @@ import (
 	"strings"
 )
 
+// Manager represents the main instance for interacting with the translation API.
 type Manager struct {
 	BaseURl string
 }
@@ -20,6 +22,7 @@ func NewManager(config config.TranslatorConfig) *Manager {
 	return &Manager{BaseURl: config.BaseURL}
 }
 
+// Translate translates the given text from the source language to the target language.
 func (mg Manager) Translate(s *discordgo.Session, m *discordgo.MessageCreate, text, fromLang, toLang string) {
 	reqBody := strings.NewReader(fmt.Sprintf("source_language=%s&target_language=%s&text=%s",
 		url.QueryEscape(fromLang),
