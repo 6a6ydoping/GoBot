@@ -24,5 +24,7 @@ func (mg Manager) messageCreate(s *discordgo.Session, m *discordgo.MessageCreate
 	switch command {
 	case "!weather":
 		mg.getWeatherByCity(s, m)
+	case "!reminder":
+		mg.setReminder(s, m)
 	}
 }

@@ -6,6 +6,7 @@ package bot
 import (
 	"fmt"
 	"github.com/6a6ydoping/GoBot/config"
+	"github.com/6a6ydoping/GoBot/reminder"
 	"github.com/6a6ydoping/GoBot/weather"
 	"github.com/bwmarrin/discordgo"
 )
@@ -16,11 +17,12 @@ var (
 )
 
 type Manager struct {
-	WeatherManager *weather.Manager
+	WeatherManager  *weather.Manager
+	ReminderManager *reminder.Manager
 }
 
-func NewManager(manager *weather.Manager) *Manager {
-	return &Manager{manager}
+func NewManager(wManager *weather.Manager, rManager *reminder.Manager) *Manager {
+	return &Manager{wManager, rManager}
 }
 
 func (mg Manager) Start(config *config.BotConfig) {
