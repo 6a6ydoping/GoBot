@@ -12,6 +12,7 @@ type Config struct {
 	Bot        BotConfig        `yaml:"bot"`
 	Weather    WeatherConfig    `yaml:"weather"`
 	Translator TranslatorConfig `yaml:"translator"`
+	TriviaGame TriviaGameConfig `yaml:"triviaGame"`
 }
 
 // BotConfig represents the configuration settings for the bot.
@@ -27,6 +28,14 @@ type WeatherConfig struct {
 
 type TranslatorConfig struct {
 	BaseURL string `yaml:"BaseURL"`
+}
+
+type TriviaGameConfig struct {
+	BaseURL   string `yaml:"BaseURL"`
+	MinNumber int    `yaml:"MinNumber"`
+	MaxNumber int    `yaml:"MaxNumber"`
+	APIKey    string `yaml:"APIKey"`
+	APIHost   string `yaml:"APIHost"`
 }
 
 func InitConfig(path string) (*Config, error) {

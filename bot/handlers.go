@@ -14,6 +14,11 @@ func (mg Manager) messageCreate(s *discordgo.Session, m *discordgo.MessageCreate
 		return
 	}
 
+	if state, ok := mg.TriviaGameManager.TriviaState[m.Author.ID]; ok {
+		mg.trivia(s, m, state)
+		return
+	}
+
 	// commands
 	command := strings.Fields(m.Content)[0]
 	if command[0] != '!' { // Check if this not command
@@ -26,5 +31,7 @@ func (mg Manager) messageCreate(s *discordgo.Session, m *discordgo.MessageCreate
 		mg.setReminder(s, m)
 	case "!translate":
 		mg.translate(s, m)
+	case "!trivia":
+		mg.trivia(s, m, 0)
 	}
 }

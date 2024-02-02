@@ -34,7 +34,7 @@ func (mg Manager) Translate(s *discordgo.Session, m *discordgo.MessageCreate, te
 		s.ChannelMessageSend(m.ChannelID, "Couldn't create the request")
 		return
 	}
-
+	// TODO: forgot to replace keys to the config
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Set("X-RapidAPI-Key", "8a0f63e73dmsh95db0ad37870d82p1c1e6ajsncc0ba05f46d4")
 	req.Header.Set("X-RapidAPI-Host", "text-translator2.p.rapidapi.com")

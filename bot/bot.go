@@ -8,6 +8,7 @@ import (
 	"github.com/6a6ydoping/GoBot/config"
 	"github.com/6a6ydoping/GoBot/reminder"
 	"github.com/6a6ydoping/GoBot/translator"
+	"github.com/6a6ydoping/GoBot/triviaGame"
 	"github.com/6a6ydoping/GoBot/weather"
 	"github.com/bwmarrin/discordgo"
 )
@@ -22,10 +23,11 @@ type Manager struct {
 	WeatherManager    *weather.Manager
 	ReminderManager   *reminder.Manager
 	TranslatorManager *translator.Manager
+	TriviaGameManager *triviaGame.Manager
 }
 
-func NewManager(wManager *weather.Manager, rManager *reminder.Manager, tManager *translator.Manager) *Manager {
-	return &Manager{wManager, rManager, tManager}
+func NewManager(wManager *weather.Manager, rManager *reminder.Manager, tManager *translator.Manager, gameManager *triviaGame.Manager) *Manager {
+	return &Manager{wManager, rManager, tManager, gameManager}
 }
 
 func (mg Manager) Start(config *config.BotConfig) {
